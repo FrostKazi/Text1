@@ -1,10 +1,9 @@
 ---
 layout: page
 title: projects
-permalink: /projects/
-description: Engineering projects in robotics, autonomous systems, and embedded hardware.
+permalink: /
 nav: true
-nav_order: 2
+nav_order: 1
 horizontal: false
 ---
 

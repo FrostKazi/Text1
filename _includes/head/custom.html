@@ -1,0 +1,61 @@
+<!-- Custom portfolio overrides -->
+<style>
+  /* ── Blue accent (replaces default pink) ───────────────────────── */
+  :root {
+    --global-theme-color:      #2563eb !important;
+    --global-hover-color:      #1d4ed8 !important;
+    --global-hover-text-color: #1e40af !important;
+  }
+  html[data-theme="dark"] {
+    --global-theme-color:      #60a5fa !important;
+    --global-hover-color:      #93c5fd !important;
+    --global-hover-text-color: #bfdbfe !important;
+  }
+
+  /* ── Footer: plain text, no black banner ───────────────────────── */
+  footer {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-top: 1px solid rgba(128,128,128,0.15) !important;
+    padding: 1.25rem 0 !important;
+  }
+  footer .container {
+    text-align: center !important;
+    font-size: 0.8rem !important;
+    opacity: 0.55 !important;
+  }
+
+  /* ── Remove progress bar just in case ──────────────────────────── */
+  #progress { display: none !important; }
+
+  /* ── Project cards: proper card look ───────────────────────────── */
+  .projects .card {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    border: 1px solid rgba(128,128,128,0.12) !important;
+  }
+  .projects .card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10) !important;
+  }
+  .projects .card img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+  .projects .card .card-body {
+    padding: 1rem 1.1rem !important;
+  }
+  .projects .card-title {
+    font-size: 0.97rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.35rem !important;
+  }
+  .projects .card-text {
+    font-size: 0.83rem !important;
+    opacity: 0.7 !important;
+    line-height: 1.5 !important;
+  }
+</style>
