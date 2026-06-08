@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://FrostKazi.github.io/Text1/sitemap.xml
