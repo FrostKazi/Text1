@@ -1,61 +1,120 @@
-<!-- Custom portfolio overrides -->
+<!-- Portfolio custom styles & blue theme override -->
 <style>
-  /* ── Blue accent (replaces default pink) ───────────────────────── */
-  :root {
-    --global-theme-color:      #2563eb !important;
-    --global-hover-color:      #1d4ed8 !important;
-    --global-hover-text-color: #1e40af !important;
-  }
-  html[data-theme="dark"] {
-    --global-theme-color:      #60a5fa !important;
-    --global-hover-color:      #93c5fd !important;
-    --global-hover-text-color: #bfdbfe !important;
-  }
+/* ── Card grid ─────────────────────────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 0.5rem 0 2rem;
+}
+@media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .projects-grid { grid-template-columns: 1fr; } }
 
-  /* ── Footer: plain text, no black banner ───────────────────────── */
-  footer {
-    background: transparent !important;
-    box-shadow: none !important;
-    border-top: 1px solid rgba(128,128,128,0.15) !important;
-    padding: 1.25rem 0 !important;
-  }
-  footer .container {
-    text-align: center !important;
-    font-size: 0.8rem !important;
-    opacity: 0.55 !important;
-  }
+.pcard-link { text-decoration: none !important; color: inherit; display: block; }
 
-  /* ── Remove progress bar just in case ──────────────────────────── */
-  #progress { display: none !important; }
+.pcard {
+  background: var(--global-card-bg-color, #fff);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.pcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+}
+html[data-theme="dark"] .pcard {
+  background: var(--global-card-bg-color, #1e2230);
+  border-color: rgba(255,255,255,0.07);
+}
 
-  /* ── Project cards: proper card look ───────────────────────────── */
-  .projects .card {
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-    border: 1px solid rgba(128,128,128,0.12) !important;
-  }
-  .projects .card:hover {
-    transform: translateY(-3px) !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.10) !important;
-  }
-  .projects .card img {
-    width: 100% !important;
-    height: 200px !important;
-    object-fit: cover !important;
-    display: block !important;
-  }
-  .projects .card .card-body {
-    padding: 1rem 1.1rem !important;
-  }
-  .projects .card-title {
-    font-size: 0.97rem !important;
-    font-weight: 600 !important;
-    margin-bottom: 0.35rem !important;
-  }
-  .projects .card-text {
-    font-size: 0.83rem !important;
-    opacity: 0.7 !important;
-    line-height: 1.5 !important;
-  }
+.pcard-img { overflow: hidden; }
+.pcard-img img {
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.pcard:hover .pcard-img img { transform: scale(1.04); }
+
+.pcard-body {
+  padding: 1rem 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.pcard-title {
+  font-size: 0.97rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  line-height: 1.35;
+}
+.pcard-desc {
+  font-size: 0.82rem;
+  opacity: 0.65;
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.pcard-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+}
+.pcard-tag {
+  font-size: 0.72rem;
+  padding: 2px 9px;
+  border-radius: 20px;
+  border: 1px solid var(--global-theme-color, #1a73e8);
+  color: var(--global-theme-color, #1a73e8);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* ── Navbar brand name always visible ──────────────────────────────── */
+.navbar-brand, .navbar-brand span, .navbar-brand strong {
+  color: var(--global-text-color) !important;
+  opacity: 1 !important;
+}
+
+/* ── Footer: plain, no dark banner ─────────────────────────────────── */
+footer {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-top: 1px solid rgba(128,128,128,0.12) !important;
+  padding: 1.2rem 0 !important;
+}
+footer .container { text-align: center; font-size: 0.78rem; opacity: 0.5; }
+footer * { background: transparent !important; }
+
+/* ── Remove progress bar ─────────────────────────────────────────────── */
+#progress, .progress-bar-wrap { display: none !important; }
 </style>
+
+<!-- Blue theme: JS sets inline CSS vars which always beat stylesheet values -->
+<script>
+(function applyBlueTheme(){
+  var r = document.documentElement;
+  function setBlue(dark){
+    r.style.setProperty('--global-theme-color',      dark ? '#60a5fa' : '#1a73e8');
+    r.style.setProperty('--global-hover-color',      dark ? '#93c5fd' : '#1558b0');
+    r.style.setProperty('--global-hover-text-color', dark ? '#bfdbfe' : '#1558b0');
+    r.style.setProperty('--global-visited-color',    dark ? '#60a5fa' : '#1a73e8');
+  }
+  setBlue(r.getAttribute('data-theme') === 'dark');
+  // Re-apply when dark/light toggle fires
+  new MutationObserver(function(){ setBlue(r.getAttribute('data-theme') === 'dark'); })
+    .observe(r, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>

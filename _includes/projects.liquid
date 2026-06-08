@@ -1,0 +1,20 @@
+<a href="{{ project.url | relative_url }}" class="pcard-link">
+  <div class="pcard">
+    {% if project.img %}
+    <div class="pcard-img">
+      <img src="{{ project.img | relative_url }}" alt="{{ project.title }}" loading="lazy">
+    </div>
+    {% endif %}
+    <div class="pcard-body">
+      <h2 class="pcard-title">{{ project.title }}</h2>
+      <p class="pcard-desc">{{ project.description }}</p>
+      {% if project.tags %}
+      <div class="pcard-tags">
+        {% for tag in project.tags %}
+        <span class="pcard-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</a>
