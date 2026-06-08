@@ -1,18 +1,34 @@
-_site
-.bundle
-.DS_store
-.idea
-.jekyll-cache
+# Dependency / Build artifacts
+_site/
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-.ruby-version
-.sass-cache
-.tweet-cache
-.venv
-assets/libs/
-assets/rendercv/rendercv_output/*.typ
-al-folio-upgrade-report.md
+
+# Bundler
+.bundle/
+vendor/
+
+# Node (not used but safe to exclude)
 node_modules/
+npm-debug.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+*.pem
+*.key
+
+# IDE
+.vscode/
+.idea/
+
+# Ruby gems
+*.gem
+*.gemspec
+
+# Playwright test results
 output/playwright/
 test-results/
-vendor
-.github/
